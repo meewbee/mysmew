@@ -1,7 +1,6 @@
 const messagesContainer = document.getElementById('messages');
-let messageCount = 0;
 
-// Função para gerar um novo balão de fala
+// Função para gerar um novo balão de mensagem
 function generateMessage() {
   const messageText = document.getElementById('message-input').value;
   const character = document.getElementById('character-select').value;
@@ -9,32 +8,24 @@ function generateMessage() {
   // Se não houver mensagem, não faz nada
   if (!messageText) return;
 
-  // Incrementa a contagem da mensagem
-  messageCount++;
-
   // Cria um novo balão de mensagem
   const message = document.createElement('div');
-  message.classList.add('message-bubble');
-  
-  // Define a estrutura da mensagem
+  message.classList.add('message-bubble', character);  // Adiciona a classe do personagem para a cor do balão
+
+  // Adiciona o nome do personagem acima do balão
   message.innerHTML = `
+    <div class="message-info">${character}</div>
     <div class="message-content">${messageText}</div>
-    <div class="message-info">
-      <strong>${character}</strong> 
-      <small>Mensagem #${messageCount}</small>
-    </div>
     <div class="message-actions">
-      <button onclick="editMessage(${messageCount})">Editar</button>
-      <button onclick="deleteMessage(${messageCount})">Deletar</button>
+      <button onclick="editMessage(this)">Editar</button>
+      <button onclick="deleteMessage(this)">Deletar</button>
     </div>
   `;
 
-  message.setAttribute('data-id', messageCount);
-
-  // Se for MC, coloca à direita, caso contrário à esquerda
+  // Define se a mensagem vai para a esquerda (outros personagens) ou direita (MC)
   message.classList.add(character === 'MC' ? 'right' : 'left');
 
-  // Adiciona o balão de mensagem na tela
+  // Adiciona a mensagem ao container
   messagesContainer.appendChild(message);
 
   // Limpa o campo de entrada após o envio
@@ -42,18 +33,18 @@ function generateMessage() {
 }
 
 // Função para editar uma mensagem
-function editMessage(id) {
-  const message = document.querySelector(`[data-id="${id}"] .message-content`);
-  const newText = prompt("Edite sua mensagem:", message.innerText);
+function editMessage(button) {
+  const messageContent = button.closest('.message-bubble').querySelector('.message-content');
+  const newText = prompt("Edite sua mensagem:", messageContent.innerText);
 
   if (newText) {
-    message.innerText = newText;
+    messageContent.innerText = newText;
   }
 }
 
 // Função para deletar uma mensagem
-function deleteMessage(id) {
-  const message = document.querySelector(`[data-id="${id}"]`);
+function deleteMessage(button) {
+  const message = button.closest('.message-bubble');
   messagesContainer.removeChild(message);
 }
 
@@ -61,4 +52,3 @@ function deleteMessage(id) {
 function clearMessages() {
   messagesContainer.innerHTML = '';
 }
-
