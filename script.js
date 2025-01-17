@@ -1,115 +1,54 @@
-const chatContainer = document.getElementById('chat-container');
-const userSelect = document.getElementById('user-select');
-const messageInput = document.getElementById('message-input');
-const addMessageButton = document.getElementById('add-message');
-const clearMessagesButton = document.getElementById('clear-messages');
-const bgButtons = document.querySelectorAll('.background-selector button');
+const messagesContainer = document.getElementById('messages');
+let messageCount = 0;
 
-// Adicionar mensagem
-addMessageButton.addEventListener('click', () => {
-  const user = userSelect.value;
-  const message = messageInput.value;
-  if (!message) return;
+// Função para gerar um novo balão de fala
+function generateMessage() {
+  const messageText = prompt("Digite sua mensagem:");
+  const character = document.getElementById('character-select').value;
 
-  const newMessage = document.createElement('div');
-  newMessage.classList.add('message', user === 'MC' ? 'right' : '');
-  newMessage.setAttribute('data-user', user);
-  newMessage.innerHTML = `
-    <span class="username">${user}</span>
-    <div class="bubble">${message}</div>
+  if (!messageText) return;
+
+  messageCount++;
+  
+  const message = document.createElement('div');
+  message.classList.add('message-bubble');
+  
+  message.innerHTML = `
+    <div class="message-content">${messageText}</div>
+    <div class="message-info">
+      <strong>${character}</strong> 
+      <small>Mensagem #${messageCount}</small>
+    </div>
+    <div class="message-actions">
+      <button onclick="editMessage(${messageCount})">Editar</button>
+      <button onclick="deleteMessage(${messageCount})">Deletar</button>
+    </div>
   `;
 
-  chatContainer.appendChild(newMessage);
-  chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll automático
-  messageInput.value = ''; // Limpa o input
-});
+  message.setAttribute('data-id', messageCount);
+  message.classList.add(character === 'MC' ? 'right' : 'left'); // Alinhamento de acordo com o personagem
 
-// Limpar mensagens
-clearMessagesButton.addEventListener('click', () => {
-  chatContainer.innerHTML = '';
-});
-
-// Alterar background
-bgButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    document.body.style.backgroundImage = `url('${button.dataset.bg}.jpg')`;
-  });
-});
-// Função para criar uma nova mensagem no chat
-function addMessage(user, message, side) {
-  const chatContainer = document.getElementById("chat-container");
-
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("bubble", side);
-  messageDiv.setAttribute("contenteditable", false); // Impede edição inicial
-
-  const messageContent = document.createElement("span");
-  messageContent.textContent = message;
-
-  // Adiciona o nome do usuário no balão
-  const nameTag = document.createElement("div");
-  nameTag.classList.add("name-tag");
-  nameTag.textContent = user;
-
-  messageDiv.appendChild(nameTag);
-  messageDiv.appendChild(messageContent);
-
-  // Adiciona as opções de edição e exclusão no balão
-  const actionsDiv = document.createElement("div");
-  actionsDiv.classList.add("actions");
-
-  const editButton = document.createElement("button");
-  editButton.textContent = "Editar";
-  editButton.onclick = () => editMessage(messageDiv);
-
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Deletar";
-  deleteButton.onclick = () => deleteMessage(messageDiv);
-
-  actionsDiv.appendChild(editButton);
-  actionsDiv.appendChild(deleteButton);
-  messageDiv.appendChild(actionsDiv);
-
-  // Adiciona a mensagem ao chat
-  chatContainer.appendChild(messageDiv);
+  messagesContainer.appendChild(message);
 }
 
 // Função para editar uma mensagem
-function editMessage(messageDiv) {
-  const messageContent = messageDiv.querySelector("span");
-  messageContent.setAttribute("contenteditable", true);
-  messageDiv.setAttribute("contenteditable", true);
-  messageContent.focus();
-}
+function editMessage(id) {
+  const message = document.querySelector(`[data-id="${id}"] .message-content`);
+  const newText = prompt("Edite sua mensagem:", message.innerText);
 
-// Função para excluir uma mensagem
-function deleteMessage(messageDiv) {
-  messageDiv.remove();
-}
-// Funções para aplicar formatação
-function applyBold(messageDiv) {
-  const messageContent = messageDiv.querySelector("span");
-  messageContent.classList.toggle("bold");
-}
-
-function applyItalic(messageDiv) {
-  const messageContent = messageDiv.querySelector("span");
-  messageContent.classList.toggle("italic");
-}
-
-function applyUnderline(messageDiv) {
-  const messageContent = messageDiv.querySelector("span");
-  messageContent.classList.toggle("underline");
-}
-function increaseFontSize(messageDiv) {
-  let currentSize = parseInt(window.getComputedStyle(messageDiv.querySelector("span")).fontSize);
-  if (currentSize < 24) {  // Definindo um limite de aumento
-    messageDiv.querySelector("span").style.fontSize = `${currentSize + 3}px`;
+  if (newText) {
+    message.innerText = newText;
   }
 }
-function deleteSelectedMessages() {
-  const selectedMessages = document.querySelectorAll(".select-message:checked");
-  selectedMessages.forEach(checkbox => {
-    checkbox.parentElement.remove();
-  });
+
+// Função para deletar uma mensagem
+function deleteMessage(id) {
+  const message = document.querySelector(`[data-id="${id}"]`);
+  messagesContainer.removeChild(message);
 }
+
+// Função para limpar todas as mensagens
+function clearMessages() {
+  messagesContainer.innerHTML = '';
+}
+
