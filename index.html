@@ -1,64 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Mystic AU</title>
+  <title>Chat - AU Mystic Messenger</title>
+  <link href="https://fonts.googleapis.com/css2?family=Samsung+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat-app">
-    <!-- Seleção de background -->
-    <div class="background-selector">
-      <button data-bg="day">Day</button>
-      <button data-bg="night">Night</button>
-      <button data-bg="dawn">Dawn</button>
-      <button data-bg="noon">Noon</button>
-      <button data-bg="dusk">Dusk</button>
-      <button data-bg="code">Code</button>
+  <div id="chat-container">
+    <div id="header">
+      <h1>Chat AU Mystic Messenger</h1>
     </div>
-
-    <!-- Chat container -->
-    <div id="chat-container">
-      <div class="message" data-user="707">
-        <span class="username">707</span>
-        <div class="bubble">Oi, tudo bem?</div>
-      </div>
-      <div class="message right" data-user="MC">
-        <span class="username">MC</span>
-        <div class="bubble">Tudo ótimo, e você?</div>
-      </div>
+    <div id="messages" class="messages">
+      <!-- Mensagens serão adicionadas aqui -->
     </div>
-
-    <!-- Área de controle -->
-    <div class="controls">
-      <!-- Seleção de usuário -->
-      <select id="user-select">
+    <div id="input-section">
+      <button onclick="generateMessage()">Adicionar Balão</button>
+      <select id="character-select">
+        <option value="MC">MC</option>
         <option value="707">707</option>
-        <option value="Jaehee Kang">Jaehee Kang</option>
-        <option value="Yoosung★">Yoosung★</option>
+        <option value="Jaehee">Jaehee Kang</option>
+        <option value="Yoosung">Yoosung★</option>
         <option value="V">V</option>
-        <option value="Jumin Han">Jumin Han</option>
+        <option value="Jumin">Jumin Han</option>
+        <option value="Zen">Zen</option>
         <option value="Rika">Rika</option>
         <option value="Unknown">Unknown</option>
         <option value="Saeran">Saeran</option>
         <option value="Ray">Ray</option>
       </select>
-
-      <!-- Input para mensagem -->
-      <input type="text" id="message-input" placeholder="Digite uma mensagem">
-
-      <!-- Botões -->
-      <button id="add-message">Adicionar Mensagem</button>
-      <button id="clear-messages">Limpar Mensagens</button>
+      <button onclick="clearMessages()">Limpar Mensagens</button>
     </div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
-<!-- Botões de formatação -->
-<button onclick="applyBold(messageDiv)">B</button>
-<button onclick="applyItalic(messageDiv)">I</button>
-<button onclick="applyUnderline(messageDiv)">U</button>
-<button onclick="increaseFontSize(messageDiv)">Aumentar Fonte</button>
-<input type="checkbox" class="select-message" />
