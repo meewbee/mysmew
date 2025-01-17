@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat AU</title>
+  <title>Chat Mystic AU</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat">
-    <div class="message left">
-      <img src="zen-avatar.png" alt="Zen" class="avatar">
-      <div class="bubble">
-        <p>Oi! Tudo bem?</p>
-      </div>
+  <div class="chat-container">
+    <div class="chat">
+      <!-- Aqui as mensagens serão adicionadas dinamicamente -->
     </div>
-    <div class="message right">
-      <div class="bubble">
-        <p>Oi, Zen! Estou bem, e você?</p>
-      </div>
-      <img src="mc-avatar.png" alt="MC" class="avatar">
+    <div class="controls">
+      <select id="character-select">
+        <option value="zen">Zen</option>
+        <option value="mc">MC</option>
+        <option value="jumin">Jumin</option>
+        <option value="yoosung">Yoosung</option>
+        <!-- Adicione mais personagens aqui -->
+      </select>
+      <input type="text" id="message-input" placeholder="Digite sua mensagem">
+      <button id="send-message">Enviar</button>
+      <button id="add-entry-exit">Entrar/Sair</button>
+      <button id="clear-chat">Limpar Chat</button>
     </div>
   </div>
   <script src="script.js"></script>
