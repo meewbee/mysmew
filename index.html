@@ -16,7 +16,13 @@
       <!-- Mensagens serão adicionadas aqui -->
     </div>
     <div id="input-section">
+      <!-- Campo de texto para a mensagem -->
+      <textarea id="message-input" placeholder="Digite sua mensagem..."></textarea>
+      
+      <!-- Botão para enviar a mensagem -->
       <button onclick="generateMessage()">Adicionar Balão</button>
+
+      <!-- Seleção de personagem -->
       <select id="character-select">
         <option value="MC">MC</option>
         <option value="707">707</option>
@@ -30,6 +36,8 @@
         <option value="Saeran">Saeran</option>
         <option value="Ray">Ray</option>
       </select>
+      
+      <!-- Botão para limpar todas as mensagens -->
       <button onclick="clearMessages()">Limpar Mensagens</button>
     </div>
   </div>
