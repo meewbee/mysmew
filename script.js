@@ -3,16 +3,20 @@ let messageCount = 0;
 
 // Função para gerar um novo balão de fala
 function generateMessage() {
-  const messageText = prompt("Digite sua mensagem:");
+  const messageText = document.getElementById('message-input').value;
   const character = document.getElementById('character-select').value;
 
+  // Se não houver mensagem, não faz nada
   if (!messageText) return;
 
+  // Incrementa a contagem da mensagem
   messageCount++;
-  
+
+  // Cria um novo balão de mensagem
   const message = document.createElement('div');
   message.classList.add('message-bubble');
   
+  // Define a estrutura da mensagem
   message.innerHTML = `
     <div class="message-content">${messageText}</div>
     <div class="message-info">
@@ -26,9 +30,15 @@ function generateMessage() {
   `;
 
   message.setAttribute('data-id', messageCount);
-  message.classList.add(character === 'MC' ? 'right' : 'left'); // Alinhamento de acordo com o personagem
 
+  // Se for MC, coloca à direita, caso contrário à esquerda
+  message.classList.add(character === 'MC' ? 'right' : 'left');
+
+  // Adiciona o balão de mensagem na tela
   messagesContainer.appendChild(message);
+
+  // Limpa o campo de entrada após o envio
+  document.getElementById('message-input').value = '';
 }
 
 // Função para editar uma mensagem
