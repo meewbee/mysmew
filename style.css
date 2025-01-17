@@ -42,13 +42,19 @@ body {
 }
 
 .left {
-  background-color: #e0f7fa;
+  background-color: #e6e6e6;
   align-self: flex-start;
 }
 
 .right {
-  background-color: #ffecb3;
+  background-color: #feffed;
   align-self: flex-end;
+}
+
+.message-info {
+  font-size: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .message-actions {
@@ -95,3 +101,56 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.message-actions button {
+  background-color: #ff6347;
+}
+
+.message-actions button:hover {
+  background-color: #ff4500;
+}
+
+/* Estilos para as cores dos balões conforme solicitado */
+.left {
+  background-color: #e6e6e6;
+}
+
+.right {
+  background-color: #feffed;
+}
+
+#messages .707 {
+  background-color: #fff2f2;
+}
+
+#messages .Jaehee {
+  background-color: #fff5eb;
+}
+
+#messages .Yoosung {
+  background-color: #edfff3;
+}
+
+#messages .V {
+  background-color: #c8fafa;
+}
+
+#messages .Jumin {
+  background-color: #f2fdff;
+}
+
+#messages .Zen {
+  background-color: #e6e6e6;
+}
+
+#messages .Rika {
+  background-color: #fffadb;
+}
+
+#messages .Unknown {
+  background-color: #f3ebff;
+}
+
+#messages .Saeran,
+#messages .Ray {
+  background-color: #edfff3;
+}
