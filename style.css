@@ -80,6 +80,16 @@ select {
   margin-top: 20px;
 }
 
+textarea {
+  width: 70%;
+  height: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: none;
+}
+
 button:disabled {
   background-color: #ddd;
   cursor: not-allowed;
