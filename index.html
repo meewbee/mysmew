@@ -7,22 +7,50 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat">
-      <!-- Aqui as mensagens serão adicionadas dinamicamente -->
+  <div class="chat-app">
+    <!-- Seleção de background -->
+    <div class="background-selector">
+      <button data-bg="day">Day</button>
+      <button data-bg="night">Night</button>
+      <button data-bg="dawn">Dawn</button>
+      <button data-bg="noon">Noon</button>
+      <button data-bg="dusk">Dusk</button>
+      <button data-bg="code">Code</button>
     </div>
+
+    <!-- Chat container -->
+    <div id="chat-container">
+      <div class="message" data-user="707">
+        <span class="username">707</span>
+        <div class="bubble">Oi, tudo bem?</div>
+      </div>
+      <div class="message right" data-user="MC">
+        <span class="username">MC</span>
+        <div class="bubble">Tudo ótimo, e você?</div>
+      </div>
+    </div>
+
+    <!-- Área de controle -->
     <div class="controls">
-      <select id="character-select">
-        <option value="zen">Zen</option>
-        <option value="mc">MC</option>
-        <option value="jumin">Jumin</option>
-        <option value="yoosung">Yoosung</option>
-        <!-- Adicione mais personagens aqui -->
+      <!-- Seleção de usuário -->
+      <select id="user-select">
+        <option value="707">707</option>
+        <option value="Jaehee Kang">Jaehee Kang</option>
+        <option value="Yoosung★">Yoosung★</option>
+        <option value="V">V</option>
+        <option value="Jumin Han">Jumin Han</option>
+        <option value="Rika">Rika</option>
+        <option value="Unknown">Unknown</option>
+        <option value="Saeran">Saeran</option>
+        <option value="Ray">Ray</option>
       </select>
-      <input type="text" id="message-input" placeholder="Digite sua mensagem">
-      <button id="send-message">Enviar</button>
-      <button id="add-entry-exit">Entrar/Sair</button>
-      <button id="clear-chat">Limpar Chat</button>
+
+      <!-- Input para mensagem -->
+      <input type="text" id="message-input" placeholder="Digite uma mensagem">
+
+      <!-- Botões -->
+      <button id="add-message">Adicionar Mensagem</button>
+      <button id="clear-messages">Limpar Mensagens</button>
     </div>
   </div>
   <script src="script.js"></script>
