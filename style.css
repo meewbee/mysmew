@@ -1,129 +1,87 @@
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: url('day.jpg') no-repeat center center/cover;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.chat-app {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+body {
+  font-family: 'Samsung Sans', sans-serif;
+  background-color: #f0f0f0;
 }
 
 #chat-container {
-  flex: 1;
-  background: rgba(0, 0, 0, 0.8);
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
   border-radius: 10px;
-  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#header h1 {
+  text-align: center;
+  font-size: 24px;
+}
+
+#messages {
+  height: 400px;
   overflow-y: auto;
-  max-height: 500px;
-}
-
-.message {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.message.right {
-  justify-content: flex-end;
-}
-
-.bubble {
-  background: #444;
-  color: #fff;
+  margin-bottom: 20px;
   padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
+  background-color: #f7f7f7;
+  border-radius: 5px;
 }
 
-.username {
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.background-selector button {
-  margin: 5px;
-}
-
-.controls {
-  display: flex;
-  gap: 10px;
-}
-/* Usando a fonte Samsung Sans para todo o chat */
-* {
-  font-family: 'Samsung Sans', sans-serif;
-}
-
-/* Estilo dos balões de mensagens */
-.bubble {
-  position: relative;
-  background: #f1f1f1;
-  border-radius: 10px;
-  padding: 10px;
-  max-width: 80%;
+.message-bubble {
   margin: 10px 0;
-  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.bubble.left {
-  background: #d1e7f0;
+.left {
+  background-color: #e0f7fa;
   align-self: flex-start;
 }
 
-.bubble.right {
-  background: #c1f2d9;
+.right {
+  background-color: #ffecb3;
   align-self: flex-end;
 }
 
-/* Opções de edição e exclusão (invisíveis por padrão) */
-.bubble .actions {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+.message-actions {
+  margin-top: 5px;
+}
+
+button {
+  background-color: #007bff;
   color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+select {
   padding: 5px;
   border-radius: 5px;
 }
 
-.bubble:hover .actions {
-  display: block;
+#input-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.actions button {
-  background: none;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  margin-left: 5px;
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
 }
 
-.actions button:hover {
-  color: #ff6f61;
-}
-/* Estilos adicionais para formatação */
-.bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.underline {
-  text-decoration: underline;
-}
-/* Controle do tamanho da fonte */
-.font-size-control {
-  font-size: 16px;
-}
